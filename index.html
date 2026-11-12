@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nordic Stolt Beverages | Madhuca Luxury Botanical Spirit</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#07080A',
+            charcoal: '#0E1015',
+            gold: {
+              300: '#F5D77F',
+              400: '#E6C15B',
+              500: '#D4AF37',
+              600: '#AA8825',
+              700: '#806214'
+            },
+            copper: {
+              400: '#E08E55',
+              500: '#C57E1A',
+              600: '#9E5D13'
+            }
+          },
+          fontFamily: {
+            serif: ['Cinzel', 'Playfair Display', 'Georgia', 'serif'],
+            sans: ['Montserrat', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body {
+      background-color: #07080A;
+      color: #E2E8F0;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Luxury Golden Shimmer & Glass */
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFF6D6 0%, #F5D77F 25%, #D4AF37 60%, #946F19 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .bg-gold-gradient {
+      background: linear-gradient(135deg, #F5D77F 0%, #D4AF37 50%, #946F19 100%);
+    }
+
+    .glass-card {
+      background: rgba(14, 16, 21, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .glass-card-hover {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card-hover:hover {
+      border-color: rgba(212, 175, 55, 0.6);
+      box-shadow: 0 15px 35px -5px rgba(212, 175, 55, 0.15);
+      transform: translateY(-4px);
+    }
+
+    /* Float Animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(0.5deg); }
+    }
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #07080A;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1F242D;
+      border-radius: 4px;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #D4AF37;
+    }
+  </style>
+</head>
+<body class="selection:bg-gold-500 selection:text-black">
+
+  <!-- AGE VERIFICATION MODAL -->
+  <div id="age-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/95 backdrop-blur-2xl transition-opacity duration-500">
+    <div class="max-w-md w-full glass-card p-8 md:p-10 rounded-2xl text-center border border-gold-500/40 shadow-2xl relative">
+      
+      <!-- NS Swan Crest Logo -->
+      <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+        <svg viewBox="0 0 100 100" class="w-full h-full text-gold-500">
+          <path d="M 50 10 C 65 10 78 20 74 35 C 70 50 50 60 40 70 C 32 78 36 88 55 88 C 45 92 30 90 25 80 C 20 70 30 60 40 50 C 50 40 45 28 35 28 C 30 28 26 32 28 36 L 23 35 C 20 28 28 10 50 10 Z" fill="currentColor" />
+          <text x="25" y="65" fill="#D4AF37" font-family="Cinzel" font-size="28" font-weight="bold">N</text>
+          <text x="58" y="65" fill="#F5D77F" font-family="Cinzel" font-size="28" font-weight="bold">S</text>
+        </svg>
+      </div>
+
+      <p class="text-[10px] uppercase tracking-[0.3em] text-gold-400 font-medium mb-1" data-i18n="ageBrand">Nordic Stolt Beverages ApS • Denmark</p>
+      <h2 class="font-serif text-2xl md:text-3xl font-bold text-white mb-4" data-i18n="ageTitle">Velkommen til Madhuca</h2>
+      
+      <p class="text-gray-300 text-xs leading-relaxed mb-8 font-light" data-i18n="ageDesc">
+        You must be of legal drinking age in your country of residence to enter our world of luxury Danish spirit craft.
+      </p>
+
+      <div class="space-y-3">
+        <button onclick="confirmAge(true)" class="w-full py-3.5 rounded-full bg-gold-gradient text-obsidian font-semibold text-xs uppercase tracking-widest hover:brightness-110 transition-all shadow-lg shadow-gold-500/20" data-i18n="ageBtnYes">
+          I am of legal drinking age
+        </button>
+        <button onclick="confirmAge(false)" class="w-full py-3 rounded-full border border-gray-700 text-gray-400 font-medium text-xs uppercase tracking-widest hover:bg-white/5 transition-all" data-i18n="ageBtnNo">
+          I am under legal age
+        </button>
+      </div>
+
+      <!-- Language Selector in Gate -->
+      <div class="mt-8 pt-6 border-t border-gold-500/10 flex items-center justify-center gap-4">
+        <span class="text-[10px] text-gray-400 uppercase tracking-widest" data-i18n="langLabel">Sprog / Language:</span>
+        <button onclick="setLanguage('en')" id="btn-modal-en" class="text-xs font-semibold px-2 py-0.5 rounded text-gold-400 border border-gold-500/40">EN</button>
+        <button onclick="setLanguage('da')" id="btn-modal-da" class="text-xs font-semibold px-2 py-0.5 rounded text-gray-400 hover:text-gold-400">DA</button>
+      </div>
+
+      <!-- Underage message box -->
+      <div id="underage-msg" class="hidden mt-4 p-3 rounded bg-red-950/60 border border-red-500/40 text-red-300 text-xs">
+        <span data-i18n="deniedDesc">Access denied. You must be of legal drinking age to view this website.</span>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- MAIN NAVIGATION -->
+  <header class="fixed top-0 left-0 right-0 z-40 bg-obsidian/80 backdrop-blur-md border-b border-gold-500/10 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 flex items-center justify-center transition-transform group-hover:scale-105">
+          <svg viewBox="0 0 100 100" class="w-full h-full text-gold-500">
+            <path d="M 50 10 C 65 10 78 20 74 35 C 70 50 50 60 40 70 C 32 78 36 88 55 88 C 45 92 30 90 25 80 C 20 70 30 60 40 50 C 50 40 45 28 35 28 C 30 28 26 32 28 36 L 23 35 C 20 28 28 10 50 10 Z" fill="currentColor" />
+            <text x="25" y="65" fill="#D4AF37" font-family="Cinzel" font-size="28" font-weight="bold">N</text>
+            <text x="58" y="65" fill="#F5D77F" font-family="Cinzel" font-size="28" font-weight="bold">S</text>
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-serif text-lg font-bold tracking-widest text-white leading-none">NORDIC STOLT</span>
+          <span class="text-[9px] uppercase tracking-[0.25em] text-gold-400 font-medium">Beverages ApS</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center space-x-8 text-xs font-semibold uppercase tracking-widest text-gray-300">
+        <a href="#story" class="hover:text-gold-400 transition-colors" data-i18n="navStory">The Story</a>
+        <a href="#tasting" class="hover:text-gold-400 transition-colors" data-i18n="navSpirit">Tasting Notes</a>
+        <a href="#product" class="hover:text-gold-400 transition-colors" data-i18n="navProduct">The Spirit</a>
+        <a href="#mixology" class="hover:text-gold-400 transition-colors" data-i18n="navMixology">Mixology</a>
+        <a href="#craft" class="hover:text-gold-400 transition-colors" data-i18n="navCraft">Craftsmanship</a>
+        <a href="#contact" class="hover:text-gold-400 transition-colors" data-i18n="navAcquire">Acquire</a>
+      </nav>
+
+      <!-- Right Controls -->
+      <div class="flex items-center gap-4">
+        
+        <!-- Language Switcher Button Group -->
+        <div class="flex items-center bg-charcoal/80 p-1 rounded-full border border-gold-500/20 text-xs">
+          <button onclick="setLanguage('en')" id="btn-lang-en" class="px-2.5 py-1 rounded-full bg-gold-500 text-obsidian font-semibold transition-all">EN</button>
+          <button onclick="setLanguage('da')" id="btn-lang-da" class="px-2.5 py-1 rounded-full text-gray-400 hover:text-gold-300 font-semibold transition-all">DA</button>
+        </div>
+
+        <a href="#contact" class="hidden sm:inline-flex px-5 py-2.5 rounded-full bg-gold-500/10 border border-gold-500/40 text-gold-400 font-semibold text-xs uppercase tracking-widest hover:bg-gold-500 hover:text-obsidian transition-all" data-i18n="navAcquire">
+          Acquire
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button onclick="toggleMobileMenu()" class="lg:hidden text-gold-400 text-xl focus:outline-none">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+      </div>
+
+    </div>
+  </header>
+
+  <!-- MOBILE MENU OVERLAY -->
+  <div id="mobile-menu" class="fixed inset-0 z-30 bg-black/95 backdrop-blur-xl hidden flex-col items-center justify-center space-y-6 text-center text-sm font-semibold uppercase tracking-widest text-gray-300">
+    <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-gold-400 text-2xl">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <a href="#story" onclick="toggleMobileMenu()" class="hover:text-gold-400" data-i18n="navStory">The Story</a>
+    <a href="#tasting" onclick="toggleMobileMenu()" class="hover:text-gold-400" data-i18n="navSpirit">Tasting Notes</a>
+    <a href="#product" onclick="toggleMobileMenu()" class="hover:text-gold-400" data-i18n="navProduct">The Spirit</a>
+    <a href="#mixology" onclick="toggleMobileMenu()" class="hover:text-gold-400" data-i18n="navMixology">Mixology</a>
+    <a href="#craft" onclick="toggleMobileMenu()" class="hover:text-gold-400" data-i18n="navCraft">Craftsmanship</a>
+    <a href="#contact" onclick="toggleMobileMenu()" class="hover:text-gold-400" data-i18n="navAcquire">Acquire</a>
+  </div>
+
+
+  <!-- HERO SECTION -->
+  <section class="relative min-h-screen pt-28 pb-16 flex items-center justify-center overflow-hidden">
+    
+    <!-- Background Glow & Lighting -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+    <div class="absolute bottom-10 right-10 w-[400px] h-[400px] bg-copper-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+      
+      <!-- Hero Text Content -->
+      <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+        
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-[10px] font-semibold uppercase tracking-[0.2em]">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse"></span>
+          <span data-i18n="heroBadge">Ultra-Premium Danish Craft Spirit</span>
+        </div>
+
+        <h1 class="font-serif text-4xl sm:text-6xl xl:text-7xl font-extrabold text-white leading-[1.1] tracking-tight">
+          <span data-i18n="heroTitleMain">The Sacred Blossom of the East,</span> <br>
+          <span class="gold-gradient-text italic font-normal" data-i18n="heroTitleSub">Mastered in the North.</span>
+        </h1>
+
+        <p class="text-gray-300 text-sm md:text-base font-light max-w-xl mx-auto lg:mx-0 leading-relaxed" data-i18n="heroDesc">
+          Crafted by Nordic Stolt Beverages ApS in Denmark. Wild-harvested exotic Madhuca indica blossoms blended with Scandinavian precision and pristine spring water.
+        </p>
+
+        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+          <a href="#product" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gold-gradient text-obsidian font-semibold text-xs uppercase tracking-widest hover:brightness-110 transition-all shadow-lg hover:shadow-gold-500/20 text-center" data-i18n="heroCta1">
+            Explore Madhuca
+          </a>
+          <a href="#story" class="w-full sm:w-auto px-8 py-4 rounded-full border border-gold-500/40 text-gold-400 font-semibold text-xs uppercase tracking-widest hover:bg-gold-500/10 transition-all text-center" data-i18n="heroCta2">
+            Discover Our Craft
+          </a>
+        </div>
+
+        <!-- Quick Spec Stats -->
+        <div class="pt-8 grid grid-cols-3 gap-4 border-t border-gold-500/20 max-w-lg mx-auto lg:mx-0">
+          <div class="text-center lg:text-left">
+            <span class="block text-2xl font-serif text-gold-400 font-bold">37.5%</span>
+            <span class="text-[9px] uppercase tracking-wider text-gray-400" data-i18n="statAbv">ABV / 75 Proof</span>
+          </div>
+          <div class="text-center lg:text-left">
+            <span class="block text-2xl font-serif text-gold-400 font-bold">Denmark</span>
+            <span class="text-[9px] uppercase tracking-wider text-gray-400" data-i18n="statOrigin">Micro-Batch Crafted</span>
+          </div>
+          <div class="text-center lg:text-left">
+            <span class="block text-2xl font-serif text-gold-400 font-bold">70 CL</span>
+            <span class="text-[9px] uppercase tracking-wider text-gray-400" data-i18n="statNatural">Natural Blossom</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Hero Bottle Visual -->
+      <div class="lg:col-span-6 relative flex flex-col items-center justify-center">
+        <div class="relative z-10 w-full max-w-[320px] sm:max-w-[360px] h-[540px] flex items-center justify-center animate-float">
+          
+          <!-- Detailed SVG Rendered Bottle matching Indri bottle proportions -->
+          <svg viewBox="0 0 240 500" class="w-full h-full drop-shadow-[0_25px_35px_rgba(212,175,55,0.35)]">
+            
+            <defs>
+              <linearGradient id="liquidAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#3A1C04" />
+                <stop offset="25%" stop-color="#9E5D13" />
+                <stop offset="60%" stop-color="#E29C28" />
+                <stop offset="85%" stop-color="#C57E1A" />
+                <stop offset="100%" stop-color="#4A2505" />
+              </linearGradient>
+
+              <linearGradient id="labelPaper" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="50%" stop-color="#FBF8F2" />
+                <stop offset="100%" stop-color="#F4EFE6" />
+              </linearGradient>
+
+              <linearGradient id="goldFoil" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F5D77F" />
+                <stop offset="50%" stop-color="#D4AF37" />
+                <stop offset="100%" stop-color="#946F19" />
+              </linearGradient>
+            </defs>
+
+            <!-- Heavy Glass Base Bottom -->
+            <path d="M 68 450 Q 120 465 172 450 L 170 462 Q 120 472 70 462 Z" fill="rgba(255,255,255,0.4)" />
+            <path d="M 65 440 L 67 460 Q 120 472 173 460 L 175 440 Z" fill="#E29C28" opacity="0.85" />
+
+            <!-- Main Liquid Body -->
+            <path d="M 103 115 L 137 115 Q 166 142 175 190 L 175 442 Q 120 458 65 442 L 65 190 Q 74 142 103 115 Z" fill="url(#liquidAmber)" />
+
+            <!-- Glass Outer Contour -->
+            <path d="M 102 85 L 138 85 Q 140 120 142 135 Q 172 152 178 190 L 178 445 Q 178 465 120 465 Q 62 465 62 445 L 62 190 Q 68 152 98 135 Q 100 120 102 85 Z" 
+                  fill="none" stroke="#D4AF37" stroke-width="1.2" opacity="0.8" />
+            
+            <!-- Embossed Glass Collar Ring -->
+            <path d="M 94 138 Q 120 145 146 138 Q 148 143 146 148 Q 120 156 94 148 Z" fill="rgba(255,255,255,0.25)" stroke="#F5D77F" stroke-width="0.8"/>
+            <text x="120" y="145" fill="#F5D77F" font-size="5" font-family="Cinzel" font-weight="bold" text-anchor="middle" letter-spacing="2" opacity="0.9">NORDIC STOLT</text>
+
+            <!-- Highlights -->
+            <path d="M 70 190 L 70 435" stroke="rgba(255,255,255,0.35)" stroke-width="3.5" stroke-linecap="round" />
+            <path d="M 170 190 L 170 435" stroke="rgba(0,0,0,0.4)" stroke-width="4" stroke-linecap="round" />
+
+            <!-- Dark Neck Foil -->
+            <path d="M 100 32 L 140 32 L 138 88 L 102 88 Z" fill="#121418" stroke="#332B15" stroke-width="1" />
+            <rect x="101" y="80" width="38" height="4" fill="#946F19" />
+
+            <!-- Gold Swan Monogram on Neck Sleeve -->
+            <g transform="translate(120, 58) scale(0.45)">
+              <path d="M -8 -8 C -4 -16 6 -16 6 -8 C 6 -3 -1 0 -4 4 C -7 8 -5 13 4 13 C 1 15 -6 14 -8 10 C -10 6 -6 2 -2 -2 C 2 -6 0 -11 -4 -11 C -6 -11 -7 -9 -6 -7 Z" fill="url(#goldFoil)" />
+              <text x="5" y="6" fill="url(#goldFoil)" font-family="Cinzel" font-size="12" font-weight="bold">S</text>
+              <text x="-14" y="6" fill="url(#goldFoil)" font-family="Cinzel" font-size="12" font-weight="bold">N</text>
+            </g>
+
+            <!-- Wooden Stopper -->
+            <rect x="96" y="16" width="48" height="18" rx="4" fill="#7A4B20" stroke="#C57E1A" stroke-width="1.2" />
+            <rect x="98" y="18" width="44" height="4" fill="#9E5D13" opacity="0.6" />
+
+            <!-- Authentic Off-White Parchment Label -->
+            <g transform="translate(70, 205)">
+              <rect x="0" y="0" width="100" height="190" rx="3" fill="url(#labelPaper)" stroke="#C57E1A" stroke-width="0.8" />
+              <rect x="2" y="2" width="96" height="186" fill="none" stroke="#D4AF37" stroke-width="0.3" stroke-dasharray="2,1" />
+
+              <circle cx="50" cy="14" r="3" fill="none" stroke="#6B4E0E" stroke-width="0.5" />
+              <text x="50" y="22" fill="#555555" font-size="3" font-family="Montserrat" text-anchor="middle" letter-spacing="0.5">DENMARK CRAFTED</text>
+
+              <!-- Main Logo: Stylized NS Swan Emblem -->
+              <g transform="translate(50, 48) scale(0.85)">
+                <path d="M 2 -24 C 9 -24 16 -16 14 -7 C 12 1 2 6 -3 11 C -7 15 -5 20 6 20 C 1 23 -8 22 -11 16 C -14 10 -9 4 -3 -2 C 3 -8 0 -16 -6 -16 C -9 -16 -11 -13 -10 -10 L -13 -11 C -14 -16 -10 -24 2 -24 Z" fill="url(#goldFoil)" />
+                <text x="-22" y="10" fill="#6B4E0E" font-family="Cinzel" font-size="26" font-weight="800">N</text>
+                <text x="3" y="10" fill="url(#goldFoil)" font-family="Cinzel" font-size="26" font-weight="800">S</text>
+              </g>
+
+              <!-- Brand Title: MADHUCA -->
+              <text x="50" y="82" fill="#8A5A1B" font-size="13" font-family="Cinzel" font-weight="900" text-anchor="middle" letter-spacing="1.5">MADHUCA</text>
+              <text x="50" y="92" fill="#222222" font-size="4.5" font-family="Cinzel" font-weight="700" text-anchor="middle" letter-spacing="1">PREMIUM BOTANICAL SPIRIT</text>
+              
+              <text x="50" y="100" fill="#946F19" font-size="3.5" font-family="Montserrat" font-weight="600" text-anchor="middle" letter-spacing="1">NORDIC STOLT</text>
+
+              <line x1="15" y1="106" x2="85" y2="106" stroke="#D4AF37" stroke-width="0.5" />
+
+              <text x="50" y="114" fill="#333333" font-size="3.2" font-family="Montserrat" font-weight="bold" text-anchor="middle">NORDIC STOLT BEVERAGES - CRAFTED IN</text>
+              <text x="50" y="120" fill="#333333" font-size="3.2" font-family="Montserrat" font-weight="bold" text-anchor="middle">DENMARK WITH MADHUCA INDICA</text>
+
+              <!-- Bottom Details Strip (70CL - NS - 37.5% ABV) -->
+              <rect x="8" y="128" width="84" height="22" fill="#FAF6F0" stroke="#D4AF37" stroke-width="0.6" />
+              <line x1="8" y1="138" x2="92" y2="138" stroke="#D4AF37" stroke-width="0.4" />
+              
+              <text x="50" y="135" fill="#6B4E0E" font-size="3.5" font-family="Cinzel" font-weight="bold" text-anchor="middle">70CL - THE DENMARK BATCH</text>
+              
+              <text x="24" y="145" fill="#222222" font-size="4" font-family="Montserrat" font-weight="bold" text-anchor="middle">70cl</text>
+
+              <circle cx="50" cy="144.5" r="3.5" fill="none" stroke="#946F19" stroke-width="0.5" />
+              <text x="50" y="146" fill="#946F19" font-size="3" font-family="Cinzel" font-weight="bold" text-anchor="middle">NS</text>
+
+              <text x="76" y="145" fill="#222222" font-size="4" font-family="Montserrat" font-weight="bold" text-anchor="middle">37.5% vol</text>
+
+              <text x="50" y="160" fill="#666666" font-size="3" font-family="Montserrat" text-anchor="middle" letter-spacing="0.5">PRODUCT OF DENMARK</text>
+            </g>
+
+          </svg>
+        </div>
+
+        <div class="absolute bottom-2 w-56 h-7 bg-gold-500/30 rounded-full blur-xl"></div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- BRAND STORY & CRAFTSMANSHIP -->
+  <section id="story" class="py-24 bg-charcoal relative border-t border-gold-500/20">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-gold-400 mb-3" data-i18n="storySub">Two Worlds Collide</p>
+        <h2 class="font-serif text-3xl md:text-5xl text-white font-bold tracking-tight" data-i18n="storyTitle">The Origin of Madhuca</h2>
+        <div class="h-px w-20 bg-gold-500/50 mx-auto my-6"></div>
+        <p class="text-gray-300 text-sm md:text-base leading-relaxed" data-i18n="storyDesc">
+          For centuries, the night-blooming Madhuca indica tree was revered across ancient Asian folklore for its naturally sweet succulent blossoms. Nordic Stolt Beverages ApS brings this rare jewel to Scandinavia, bridging ancient floral heritage with Danish master craftsmanship.
+        </p>
+      </div>
+
+      <!-- Timeline Steps -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <div class="glass-card p-6 rounded-xl relative group hover:border-gold-500/50 transition-all">
+          <div class="text-gold-500 font-serif text-3xl font-bold mb-4">01</div>
+          <h3 class="text-white font-serif text-xl font-semibold mb-2" data-i18n="step1Title">Wild Harvesting</h3>
+          <p class="text-gray-400 text-xs leading-relaxed" data-i18n="step1Desc">
+            Blossoms are hand-picked at dawn when natural nectar sweetness reaches peak intensity. Sustainably harvested in partnership with forest communities.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-xl relative group hover:border-gold-500/50 transition-all">
+          <div class="text-gold-500 font-serif text-3xl font-bold mb-4">02</div>
+          <h3 class="text-white font-serif text-xl font-semibold mb-2" data-i18n="step2Title">Nordic Transport</h3>
+          <p class="text-gray-400 text-xs leading-relaxed" data-i18n="step2Desc">
+            Sun-dried blossoms are carefully transported under climate control directly to our boutique production facility in Denmark.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-xl relative group hover:border-gold-500/50 transition-all">
+          <div class="text-gold-500 font-serif text-3xl font-bold mb-4">03</div>
+          <h3 class="text-white font-serif text-xl font-semibold mb-2" data-i18n="step3Title">Artisan Maceration</h3>
+          <p class="text-gray-400 text-xs leading-relaxed" data-i18n="step3Desc">
+            Steeped with artisan care using traditional Danish copper vessels to unlock delicate honey, nut, and botanical notes.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-xl relative group hover:border-gold-500/50 transition-all">
+          <div class="text-gold-500 font-serif text-3xl font-bold mb-4">04</div>
+          <h3 class="text-white font-serif text-xl font-semibold mb-2" data-i18n="step4Title">Danish Pure Water</h3>
+          <p class="text-gray-400 text-xs leading-relaxed" data-i18n="step4Desc">
+            Blended with mineral-rich Danish spring water, giving Madhuca its signature velvet-smooth palate and crystal clarity.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TASTING PROFILE & SENSORY METERS -->
+  <section id="tasting" class="py-24 bg-obsidian relative">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-5 space-y-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-gold-400" data-i18n="tastingSub">Sensory Evaluation</p>
+          <h2 class="font-serif text-3xl md:text-5xl text-white font-bold leading-tight" data-i18n="tastingTitle">
+            An Unparalleled <br><span class="text-gold-400 italic">Flavor Architecture</span>
+          </h2>
+          <p class="text-gray-300 text-sm leading-relaxed" data-i18n="tastingDesc">
+            Neither traditional rum nor single malt whisky—Madhuca defines its own luxury category. A complex interplay of warm floral honey, toasted macadamia, cardamom spice, and clean Nordic oak.
+          </p>
+
+          <div class="space-y-4 pt-4">
+            <div class="border-l-2 border-gold-500 pl-4">
+              <h4 class="text-white font-serif text-sm font-bold uppercase tracking-wider" data-i18n="noseTitle">The Nose</h4>
+              <p class="text-gray-400 text-xs mt-1" data-i18n="noseDesc">Wild honey, roasted cashew, dried fig, subtle jasmine blossom.</p>
+            </div>
+
+            <div class="border-l-2 border-gold-500 pl-4">
+              <h4 class="text-white font-serif text-sm font-bold uppercase tracking-wider" data-i18n="palateTitle">The Palate</h4>
+              <p class="text-gray-400 text-xs mt-1" data-i18n="palateDesc">Rich velvet mouthfeel, dark caramel, crushed cardamom, dried apricot.</p>
+            </div>
+
+            <div class="border-l-2 border-gold-500 pl-4">
+              <h4 class="text-white font-serif text-sm font-bold uppercase tracking-wider" data-i18n="finishTitle">The Finish</h4>
+              <p class="text-gray-400 text-xs mt-1" data-i18n="finishDesc">Long, warm, lingering oak spice with a touch of botanical sweetness.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flavor Sliders Container -->
+        <div class="lg:col-span-7 glass-card p-8 md:p-10 rounded-2xl relative border border-gold-500/30">
+          
+          <div class="flex items-center justify-between border-b border-gold-500/20 pb-6 mb-8">
+            <div>
+              <h3 class="font-serif text-2xl text-white font-bold" data-i18n="masterBatchTitle">Madhuca Original Harvest</h3>
+              <p class="text-xs text-gold-400 uppercase tracking-widest mt-1" data-i18n="masterBatchSub">Batch #01 • Danish Botanical Craft</p>
+            </div>
+            <div class="text-right">
+              <span class="text-3xl font-serif text-gold-400 font-bold">37.5%</span>
+              <span class="block text-[10px] text-gray-400 uppercase tracking-wider" data-i18n="volLabel">Alc. By Vol.</span>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            
+            <div>
+              <div class="flex justify-between text-xs font-semibold mb-2">
+                <span class="text-gray-300 uppercase tracking-wider" data-i18n="meter1">Floral Sweetness</span>
+                <span class="text-gold-400">88%</span>
+              </div>
+              <div class="w-full bg-black/60 h-2 rounded-full overflow-hidden border border-gold-500/20">
+                <div class="bg-gold-gradient h-full rounded-full w-[88%] transition-all duration-1000"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-semibold mb-2">
+                <span class="text-gray-300 uppercase tracking-wider" data-i18n="meter2">Spice Depth</span>
+                <span class="text-gold-400">75%</span>
+              </div>
+              <div class="w-full bg-black/60 h-2 rounded-full overflow-hidden border border-gold-500/20">
+                <div class="bg-gold-gradient h-full rounded-full w-[75%] transition-all duration-1000"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-semibold mb-2">
+                <span class="text-gray-300 uppercase tracking-wider" data-i18n="meter3">Velvet Smoothness</span>
+                <span class="text-gold-400">94%</span>
+              </div>
+              <div class="w-full bg-black/60 h-2 rounded-full overflow-hidden border border-gold-500/20">
+                <div class="bg-gold-gradient h-full rounded-full w-[94%] transition-all duration-1000"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-semibold mb-2">
+                <span class="text-gray-300 uppercase tracking-wider" data-i18n="meter4">Botanical Complexity</span>
+                <span class="text-gold-400">82%</span>
+              </div>
+              <div class="w-full bg-black/60 h-2 rounded-full overflow-hidden border border-gold-500/20">
+                <div class="bg-gold-gradient h-full rounded-full w-[82%] transition-all duration-1000"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-gold-500/20 flex items-center gap-4 text-xs text-gray-400">
+            <i class="fa-solid fa-wine-glass text-gold-400 text-lg"></i>
+            <div>
+              <strong class="text-white block font-serif" data-i18n="ritualTitle">Serving Ritual</strong>
+              <span data-i18n="ritualDesc">Pour neat at 18°C in a crystal tulip glass. Allow the spirit to breathe for 2 minutes to awaken its delicate floral nectar and warm botanical spice. Alternatively, serve over a single crystal-clear ice sphere.</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- CORE PRODUCT SHOWCASE SECTION -->
+  <section id="product" class="py-24 bg-charcoal relative border-t border-gold-500/20">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-gold-400 mb-3" data-i18n="productSub">Danish Artisan Expression</p>
+        <h2 class="font-serif text-3xl md:text-5xl text-white font-bold tracking-tight" data-i18n="productTitle">Madhuca Original Harvest</h2>
+        <div class="h-px w-20 bg-gold-500/50 mx-auto my-6"></div>
+        <p class="text-gray-300 text-sm md:text-base leading-relaxed" data-i18n="productDesc">
+          Our flagship botanical spirit handcrafted in strictly numbered batches by Nordic Stolt Beverages ApS.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto glass-card glass-card-hover rounded-2xl p-8 md:p-12 border-gold-500/30 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        
+        <div class="md:col-span-5 relative bg-black/50 rounded-xl p-8 text-center overflow-hidden border border-gold-500/10">
+          <span class="absolute top-4 left-4 px-2.5 py-1 rounded bg-gold-500/20 text-gold-300 text-[10px] font-semibold tracking-widest uppercase" data-i18n="p1Tag">Flagship</span>
+          <div class="w-48 h-80 mx-auto relative flex items-center justify-center transform hover:scale-105 transition-transform duration-500">
+            <!-- Detailed Full-Rendered SVG Bottle -->
+            <svg viewBox="0 0 240 500" class="w-full h-full drop-shadow-[0_15px_25px_rgba(212,175,55,0.35)]">
+              <defs>
+                <linearGradient id="liquidAmberFlagship" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#3A1C04" />
+                  <stop offset="25%" stop-color="#9E5D13" />
+                  <stop offset="60%" stop-color="#E29C28" />
+                  <stop offset="85%" stop-color="#C57E1A" />
+                  <stop offset="100%" stop-color="#4A2505" />
+                </linearGradient>
+
+                <linearGradient id="labelPaperFlagship" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFFFFF" />
+                  <stop offset="50%" stop-color="#FBF8F2" />
+                  <stop offset="100%" stop-color="#F4EFE6" />
+                </linearGradient>
+
+                <linearGradient id="goldFoilFlagship" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#F5D77F" />
+                  <stop offset="50%" stop-color="#D4AF37" />
+                  <stop offset="100%" stop-color="#946F19" />
+                </linearGradient>
+              </defs>
+
+              <!-- Heavy Glass Base Bottom -->
+              <path d="M 68 450 Q 120 465 172 450 L 170 462 Q 120 472 70 462 Z" fill="rgba(255,255,255,0.4)" />
+              <path d="M 65 440 L 67 460 Q 120 472 173 460 L 175 440 Z" fill="#E29C28" opacity="0.85" />
+
+              <!-- Main Liquid Body -->
+              <path d="M 103 115 L 137 115 Q 166 142 175 190 L 175 442 Q 120 458 65 442 L 65 190 Q 74 142 103 115 Z" fill="url(#liquidAmberFlagship)" />
+
+              <!-- Glass Outer Contour -->
+              <path d="M 102 85 L 138 85 Q 140 120 142 135 Q 172 152 178 190 L 178 445 Q 178 465 120 465 Q 62 465 62 445 L 62 190 Q 68 152 98 135 Q 100 120 102 85 Z" 
+                    fill="none" stroke="#D4AF37" stroke-width="1.2" opacity="0.8" />
+              
+              <!-- Embossed Glass Collar Ring -->
+              <path d="M 94 138 Q 120 145 146 138 Q 148 143 146 148 Q 120 156 94 148 Z" fill="rgba(255,255,255,0.25)" stroke="#F5D77F" stroke-width="0.8"/>
+              <text x="120" y="145" fill="#F5D77F" font-size="5" font-family="Cinzel" font-weight="bold" text-anchor="middle" letter-spacing="2" opacity="0.9">NORDIC STOLT</text>
+
+              <!-- Highlights -->
+              <path d="M 70 190 L 70 435" stroke="rgba(255,255,255,0.35)" stroke-width="3.5" stroke-linecap="round" />
+              <path d="M 170 190 L 170 435" stroke="rgba(0,0,0,0.4)" stroke-width="4" stroke-linecap="round" />
+
+              <!-- Dark Neck Foil -->
+              <path d="M 100 32 L 140 32 L 138 88 L 102 88 Z" fill="#121418" stroke="#332B15" stroke-width="1" />
+              <rect x="101" y="80" width="38" height="4" fill="#946F19" />
+
+              <!-- Gold Swan Monogram on Neck Sleeve -->
+              <g transform="translate(120, 58) scale(0.45)">
+                <path d="M -8 -8 C -4 -16 6 -16 6 -8 C 6 -3 -1 0 -4 4 C -7 8 -5 13 4 13 C 1 15 -6 14 -8 10 C -10 6 -6 2 -2 -2 C 2 -6 0 -11 -4 -11 C -6 -11 -7 -9 -6 -7 Z" fill="url(#goldFoilFlagship)" />
+                <text x="5" y="6" fill="url(#goldFoilFlagship)" font-family="Cinzel" font-size="12" font-weight="bold">S</text>
+                <text x="-14" y="6" fill="url(#goldFoilFlagship)" font-family="Cinzel" font-size="12" font-weight="bold">N</text>
+              </g>
+
+              <!-- Wooden Stopper -->
+              <rect x="96" y="16" width="48" height="18" rx="4" fill="#7A4B20" stroke="#C57E1A" stroke-width="1.2" />
+              <rect x="98" y="18" width="44" height="4" fill="#9E5D13" opacity="0.6" />
+
+              <!-- Authentic Off-White Parchment Label -->
+              <g transform="translate(70, 205)">
+                <rect x="0" y="0" width="100" height="190" rx="3" fill="url(#labelPaperFlagship)" stroke="#C57E1A" stroke-width="0.8" />
+                <rect x="2" y="2" width="96" height="186" fill="none" stroke="#D4AF37" stroke-width="0.3" stroke-dasharray="2,1" />
+
+                <circle cx="50" cy="14" r="3" fill="none" stroke="#6B4E0E" stroke-width="0.5" />
+                <text x="50" y="22" fill="#555555" font-size="3" font-family="Montserrat" text-anchor="middle" letter-spacing="0.5">DENMARK CRAFTED</text>
+
+                <!-- Main Logo: Stylized NS Swan Emblem -->
+                <g transform="translate(50, 48) scale(0.85)">
+                  <path d="M 2 -24 C 9 -24 16 -16 14 -7 C 12 1 2 6 -3 11 C -7 15 -5 20 6 20 C 1 23 -8 22 -11 16 C -14 10 -9 4 -3 -2 C 3 -8 0 -16 -6 -16 C -9 -16 -11 -13 -10 -10 L -13 -11 C -14 -16 -10 -24 2 -24 Z" fill="url(#goldFoilFlagship)" />
+                  <text x="-22" y="10" fill="#6B4E0E" font-family="Cinzel" font-size="26" font-weight="800">N</text>
+                  <text x="3" y="10" fill="url(#goldFoilFlagship)" font-family="Cinzel" font-size="26" font-weight="800">S</text>
+                </g>
+
+                <!-- Brand Title: MADHUCA -->
+                <text x="50" y="82" fill="#8A5A1B" font-size="13" font-family="Cinzel" font-weight="900" text-anchor="middle" letter-spacing="1.5">MADHUCA</text>
+                <text x="50" y="92" fill="#222222" font-size="4.5" font-family="Cinzel" font-weight="700" text-anchor="middle" letter-spacing="1">PREMIUM BOTANICAL SPIRIT</text>
+                
+                <text x="50" y="100" fill="#946F19" font-size="3.5" font-family="Montserrat" font-weight="600" text-anchor="middle" letter-spacing="1">NORDIC STOLT</text>
+
+                <line x1="15" y1="106" x2="85" y2="106" stroke="#D4AF37" stroke-width="0.5" />
+
+                <text x="50" y="114" fill="#333333" font-size="3.2" font-family="Montserrat" font-weight="bold" text-anchor="middle">NORDIC STOLT BEVERAGES - CRAFTED IN</text>
+                <text x="50" y="120" fill="#333333" font-size="3.2" font-family="Montserrat" font-weight="bold" text-anchor="middle">DENMARK WITH MADHUCA INDICA</text>
+
+                <!-- Bottom Details Strip (70CL - NS - 37.5% ABV) -->
+                <rect x="8" y="128" width="84" height="22" fill="#FAF6F0" stroke="#D4AF37" stroke-width="0.6" />
+                <line x1="8" y1="138" x2="92" y2="138" stroke="#D4AF37" stroke-width="0.4" />
+                
+                <text x="50" y="135" fill="#6B4E0E" font-size="3.5" font-family="Cinzel" font-weight="bold" text-anchor="middle">70CL - THE DENMARK BATCH</text>
+                
+                <text x="24" y="145" fill="#222222" font-size="4" font-family="Montserrat" font-weight="bold" text-anchor="middle">70cl</text>
+
+                <circle cx="50" cy="144.5" r="3.5" fill="none" stroke="#946F19" stroke-width="0.5" />
+                <text x="50" y="146" fill="#946F19" font-size="3" font-family="Cinzel" font-weight="bold" text-anchor="middle">NS</text>
+
+                <text x="76" y="145" fill="#222222" font-size="4" font-family="Montserrat" font-weight="bold" text-anchor="middle">37.5% vol</text>
+
+                <text x="50" y="160" fill="#666666" font-size="3" font-family="Montserrat" text-anchor="middle" letter-spacing="0.5">PRODUCT OF DENMARK</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <div class="md:col-span-7 space-y-6">
+          <div>
+            <span class="text-xs text-gold-400 uppercase tracking-widest font-semibold block mb-1">Harvest Edition</span>
+            <h3 class="font-serif text-3xl text-white font-bold mb-3" data-i18n="p1Title">Madhuca Original Harvest</h3>
+            <p class="text-gray-300 text-xs md:text-sm leading-relaxed" data-i18n="p1Desc">
+              Crafted directly from fresh Madhuca indica blossoms. Crisp floral aromatics with an extraordinarily smooth finish, capturing the pure essence of wild-harvested Asian flora combined with Danish pure water.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 py-4 border-y border-gold-500/20 text-xs">
+            <div>
+              <span class="text-gray-400 block text-[10px] uppercase tracking-wider">Volume & ABV</span>
+              <span class="text-white font-semibold">700ml &bull; 37.5% ABV</span>
+            </div>
+            <div>
+              <span class="text-gray-400 block text-[10px] uppercase tracking-wider">Origin</span>
+              <span class="text-white font-semibold">Handcrafted in Denmark</span>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between pt-2">
+            <div>
+              <span class="text-2xl font-serif text-gold-400 font-bold">€115.00</span>
+            </div>
+            <button onclick="openProductModal()" class="px-6 py-3 rounded-full bg-gold-gradient text-obsidian font-semibold text-xs uppercase tracking-widest hover:brightness-110 transition-all shadow-lg shadow-gold-500/20" data-i18n="btnDetails">
+              View Specifications
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- MIXOLOGY & COCKTAILS -->
+  <section id="mixology" class="py-24 bg-obsidian relative">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-gold-400 mb-3" data-i18n="cocktailSub">Craft Cocktail Alchemy</p>
+        <h2 class="font-serif text-3xl md:text-5xl text-white font-bold tracking-tight" data-i18n="cocktailTitle">Signature Mixology</h2>
+        <div class="h-px w-20 bg-gold-500/50 mx-auto my-6"></div>
+        <p class="text-gray-300 text-sm md:text-base leading-relaxed" data-i18n="cocktailDesc">
+          Curated by Copenhagen's leading mixologists to showcase the versatility of Madhuca Original Harvest.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="glass-card p-6 rounded-xl border border-gold-500/20 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-xl mb-4">
+              <i class="fa-solid fa-whiskey-glass"></i>
+            </div>
+            <h3 class="font-serif text-xl text-white font-bold mb-2" data-i18n="c1Title">Madhuca Old Fashioned</h3>
+            <p class="text-gray-400 text-xs mb-4" data-i18n="c1Desc">Madhuca Original Harvest, birch syrup, cardamom bitters, orange twist.</p>
+          </div>
+          <button onclick="openCocktailModal('c1')" class="w-full py-2 rounded bg-white/5 border border-gold-500/30 text-gold-400 text-xs uppercase tracking-widest hover:bg-gold-500 hover:text-black transition-all" data-i18n="btnRecipe">
+            View Recipe
+          </button>
+        </div>
+
+        <div class="glass-card p-6 rounded-xl border border-gold-500/20 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-xl mb-4">
+              <i class="fa-solid fa-martini-glass-citrus"></i>
+            </div>
+            <h3 class="font-serif text-xl text-white font-bold mb-2" data-i18n="c2Title">Nordic Mahua Sour</h3>
+            <p class="text-gray-400 text-xs mb-4" data-i18n="c2Desc">Madhuca Original Harvest, sea buckthorn juice, egg white, wild honey.</p>
+          </div>
+          <button onclick="openCocktailModal('c2')" class="w-full py-2 rounded bg-white/5 border border-gold-500/30 text-gold-400 text-xs uppercase tracking-widest hover:bg-gold-500 hover:text-black transition-all" data-i18n="btnRecipe">
+            View Recipe
+          </button>
+        </div>
+
+        <div class="glass-card p-6 rounded-xl border border-gold-500/20 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-xl mb-4">
+              <i class="fa-solid fa-glass-water font-bold"></i>
+            </div>
+            <h3 class="font-serif text-xl text-white font-bold mb-2" data-i18n="c3Title">Botanical Mist</h3>
+            <p class="text-gray-400 text-xs mb-4" data-i18n="c3Desc">Madhuca Original Harvest, elderflower cordial, sparkling tonic, mint mist.</p>
+          </div>
+          <button onclick="openCocktailModal('c3')" class="w-full py-2 rounded bg-white/5 border border-gold-500/30 text-gold-400 text-xs uppercase tracking-widest hover:bg-gold-500 hover:text-black transition-all" data-i18n="btnRecipe">
+            View Recipe
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- CRAFT & SUSTAINABILITY SECTION -->
+  <section id="craft" class="py-24 bg-charcoal relative border-t border-gold-500/20">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <div class="lg:col-span-6 space-y-6">
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-gold-400" data-i18n="craftSub">Nordic Craft Excellence</p>
+        <h2 class="font-serif text-3xl md:text-5xl text-white font-bold leading-tight" data-i18n="craftTitle">
+          Crafted with Pride in <br><span class="text-gold-400 italic">Denmark</span>
+        </h2>
+        <p class="text-gray-300 text-sm leading-relaxed" data-i18n="craftDesc">
+          At Nordic Stolt Beverages ApS, our Danish production facility operates on 100% green energy. We blend centuries-old Asian floral harvesting traditions with strict Scandinavian quality control standards.
+        </p>
+
+        <div class="space-y-4 pt-2">
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full bg-gold-500/10 border border-gold-500/40 flex items-center justify-center text-gold-400 shrink-0 mt-1">
+              <i class="fa-solid fa-leaf text-xs"></i>
+            </div>
+            <div>
+              <h4 class="text-white font-serif text-base font-semibold" data-i18n="craftPill1Title">Fair-Trade Sourcing</h4>
+              <p class="text-gray-400 text-xs" data-i18n="craftPill1Desc">Direct partnership with indigenous harvester cooperatives, ensuring fair wages and forest conservation.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full bg-gold-500/10 border border-gold-500/40 flex items-center justify-center text-gold-400 shrink-0 mt-1">
+              <i class="fa-solid fa-droplet text-xs"></i>
+            </div>
+            <div>
+              <h4 class="text-white font-serif text-base font-semibold" data-i18n="craftPill2Title">Zero-Waste Production</h4>
+              <p class="text-gray-400 text-xs" data-i18n="craftPill2Desc">Spent floral botanicals are repurposed into organic compost for local Danish agriculture.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Company Specs Box -->
+      <div class="lg:col-span-6 glass-card p-8 md:p-10 rounded-2xl relative border border-gold-500/30">
+        <div class="text-center space-y-6">
+          <div class="w-16 h-16 mx-auto rounded-full border border-gold-500/50 flex items-center justify-center bg-gold-500/10 text-gold-400">
+            <i class="fa-solid fa-award text-2xl"></i>
+          </div>
+          <div>
+            <h3 class="font-serif text-2xl text-white font-bold">Nordic Stolt Beverages ApS</h3>
+            <p class="text-xs text-gold-400 uppercase tracking-widest mt-1">Denmark &bull; CVR: DK-44892011</p>
+          </div>
+          <div class="h-px w-24 bg-gold-500/30 mx-auto"></div>
+          <div class="grid grid-cols-2 gap-4 text-left text-xs">
+            <div>
+              <span class="block text-gray-400 text-[10px] uppercase tracking-wider" data-i18n="cvrLabel">Company Reg</span>
+              <span class="text-white font-serif text-base font-semibold">DK-44892011</span>
+            </div>
+            <div>
+              <span class="block text-gray-400 text-[10px] uppercase tracking-wider" data-i18n="locLabel">Location</span>
+              <span class="text-white font-serif text-base font-semibold">Denmark</span>
+            </div>
+            <div>
+              <span class="block text-gray-400 text-[10px] uppercase tracking-wider" data-i18n="botLabel">Primary Botanical</span>
+              <span class="text-white font-serif text-base font-semibold">Madhuca indica</span>
+            </div>
+            <div>
+              <span class="block text-gray-400 text-[10px] uppercase tracking-wider" data-i18n="batchLabel">Batch Production</span>
+              <span class="text-white font-serif text-base font-semibold">Artisan Copper Vat</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- CONTACT & ACQUISITION FORM -->
+  <section id="contact" class="py-24 bg-obsidian relative">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <div class="lg:col-span-5 space-y-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-gold-400" data-i18n="contactSub">Acquire & Inquire</p>
+          <h2 class="font-serif text-3xl md:text-5xl text-white font-bold leading-tight" data-i18n="contactTitle">Connect with Nordic Stolt</h2>
+          <p class="text-gray-300 text-sm leading-relaxed" data-i18n="contactDesc">
+            Interested in becoming an exclusive stockist, distributor, or requesting a private tasting session in Denmark? Contact our team.
+          </p>
+
+          <div class="space-y-4 pt-4 text-xs">
+            <div class="flex items-center gap-3 text-gray-300">
+              <i class="fa-solid fa-location-dot text-gold-400 w-5"></i>
+              <span>Nordic Stolt Beverages ApS, Denmark</span>
+            </div>
+            <div class="flex items-center gap-3 text-gray-300">
+              <i class="fa-solid fa-envelope text-gold-400 w-5"></i>
+              <span>contact@nordicstolt.dk</span>
+            </div>
+            <div class="flex items-center gap-3 text-gray-300">
+              <i class="fa-solid fa-globe text-gold-400 w-5"></i>
+              <span>www.nordicstolt.dk</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 glass-card p-8 md:p-10 rounded-2xl border border-gold-500/30">
+          <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-gray-300 mb-2 font-medium" data-i18n="fieldName">Full Name</label>
+                <input type="text" required class="w-full px-4 py-3 rounded-lg bg-black/50 border border-gold-500/30 text-white text-xs focus:outline-none focus:border-gold-400 transition-colors" placeholder="Name">
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-gray-300 mb-2 font-medium" data-i18n="fieldEmail">Email Address</label>
+                <input type="email" required class="w-full px-4 py-3 rounded-lg bg-black/50 border border-gold-500/30 text-white text-xs focus:outline-none focus:border-gold-400 transition-colors" placeholder="name@domain.com">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-gray-300 mb-2 font-medium" data-i18n="fieldType">Inquiry Type</label>
+              <select class="w-full px-4 py-3 rounded-lg bg-black/50 border border-gold-500/30 text-white text-xs focus:outline-none focus:border-gold-400 transition-colors">
+                <option data-i18n="opt1">Private Bottle Acquisition</option>
+                <option data-i18n="opt2">Restaurant / Bar Distribution</option>
+                <option data-i18n="opt3">Press & Media</option>
+                <option data-i18n="opt4">Private Tasting Session</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-gray-300 mb-2 font-medium" data-i18n="fieldMsg">Message</label>
+              <textarea rows="4" required class="w-full px-4 py-3 rounded-lg bg-black/50 border border-gold-500/30 text-white text-xs focus:outline-none focus:border-gold-400 transition-colors" placeholder="Your message..."></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-4 rounded-full bg-gold-gradient text-obsidian font-semibold text-xs uppercase tracking-widest hover:brightness-110 transition-all shadow-lg shadow-gold-500/20" data-i18n="btnSubmit">
+              Transmit Message
+            </button>
+          </form>
+
+          <div id="form-success" class="hidden text-center py-8 space-y-4">
+            <i class="fa-solid fa-circle-check text-gold-400 text-4xl"></i>
+            <p class="text-white font-serif text-lg" data-i18n="msgSent">Thank you for contacting Nordic Stolt Beverages. Our concierge will respond shortly.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="py-12 bg-black border-t border-gold-500/20 text-center">
+    <div class="max-w-7xl mx-auto px-6 space-y-6">
+      
+      <div class="flex items-center justify-center gap-3">
+        <div class="w-8 h-8 text-gold-500">
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <path d="M 50 10 C 65 10 78 20 74 35 C 70 50 50 60 40 70 C 32 78 36 88 55 88 C 45 92 30 90 25 80 C 20 70 30 60 40 50 C 50 40 45 28 35 28 C 30 28 26 32 28 36 L 23 35 C 20 28 28 10 50 10 Z" fill="currentColor" />
+          </svg>
+        </div>
+        <span class="font-serif text-base font-bold tracking-widest text-white">NORDIC STOLT BEVERAGES ApS</span>
+      </div>
+
+      <p class="text-[10px] text-gray-500 uppercase tracking-widest max-w-xl mx-auto leading-relaxed" data-i18n="footerWarning">
+        PLEASE DRINK RESPONSIBLY. MADHUCA ADVOCATES MODERATE CONSUMPTION. MUST BE OF LEGAL DRINKING AGE IN YOUR JURISDICTION TO PURCHASE.
+      </p>
+
+      <div class="text-xs text-gray-500">
+        &copy; 2026 Nordic Stolt Beverages ApS. All rights reserved. Made in Denmark.
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- GENERIC MODAL OVERLAY FOR PRODUCTS & COCKTAILS -->
+  <div id="info-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md hidden">
+    <div class="max-w-lg w-full glass-card p-8 rounded-2xl relative border border-gold-500/40 text-left">
+      <button onclick="closeInfoModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gold-400 text-xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div id="modal-content">
+        <!-- Dynamic Insertion -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- JAVASCRIPT & BILINGUAL DICTIONARY -->
+  <script>
+    // Bilingual Dictionary Data
+    const i18nData = {
+      en: {
+        ageBrand: "Nordic Stolt Beverages ApS • Denmark",
+        ageTitle: "Welcome to Madhuca",
+        ageDesc: "You must be of legal drinking age in your country of residence to enter our world of luxury Danish spirit craft.",
+        ageBtnYes: "I am of legal drinking age",
+        ageBtnNo: "I am under legal age",
+        langLabel: "Language / Sprog:",
+        deniedTitle: "Access Denied",
+        deniedDesc: "We strictly advocate responsible drinking. You must be of legal drinking age to access Nordic Stolt Beverages.",
+        navStory: "The Story",
+        navSpirit: "Tasting Notes",
+        navProduct: "The Spirit",
+        navMixology: "Mixology",
+        navCraft: "Craftsmanship",
+        navAcquire: "Acquire",
+        heroBadge: "Ultra-Premium Danish Craft Spirit",
+        heroTitleMain: "The Sacred Blossom of the East,",
+        heroTitleSub: "Mastered in the North.",
+        heroDesc: "Crafted by Nordic Stolt Beverages ApS in Denmark. Wild-harvested exotic Madhuca indica blossoms blended with Scandinavian precision and pristine spring water.",
+        heroCta1: "Explore Madhuca",
+        heroCta2: "Discover Our Craft",
+        statAbv: "ABV / 75 Proof",
+        statOrigin: "Micro-Batch Crafted",
+        statNatural: "Natural Blossom",
+        storySub: "Two Worlds Collide",
+        storyTitle: "The Origin of Madhuca",
+        storyDesc: "For centuries, the night-blooming Madhuca indica tree was revered across ancient Asian folklore for its naturally sweet succulent blossoms. Nordic Stolt Beverages ApS brings this rare jewel to Scandinavia, bridging ancient floral heritage with Danish master craftsmanship.",
+        step1Title: "Wild Harvesting",
+        step1Desc: "Blossoms are hand-picked at dawn when natural nectar sweetness reaches peak intensity. Sustainably harvested in partnership with forest communities.",
+        step2Title: "Nordic Transport",
+        step2Desc: "Sun-dried blossoms are carefully transported under climate control directly to our boutique production facility in Denmark.",
+        step3Title: "Artisan Maceration",
+        step3Desc: "Steeped with artisan care using traditional Danish copper vessels to unlock delicate honey, nut, and botanical notes.",
+        step4Title: "Danish Pure Water",
+        step4Desc: "Blended with mineral-rich Danish spring water, giving Madhuca its signature velvet-smooth palate and crystal clarity.",
+        tastingSub: "Sensory Evaluation",
+        tastingTitle: "An Unparalleled Flavor Architecture",
+        tastingDesc: "Neither traditional rum nor single malt whisky—Madhuca defines its own luxury category. A complex interplay of warm floral honey, toasted macadamia, cardamom spice, and clean Nordic oak.",
+        noseTitle: "The Nose",
+        noseDesc: "Wild honey, roasted cashew, dried fig, subtle jasmine blossom.",
+        palateTitle: "The Palate",
+        palateDesc: "Rich velvet mouthfeel, dark caramel, crushed cardamom, dried apricot.",
+        finishTitle: "The Finish",
+        finishDesc: "Long, warm, lingering oak spice with a touch of botanical sweetness.",
+        masterBatchTitle: "Madhuca Original Harvest",
+        masterBatchSub: "Batch #01 • Danish Botanical Craft",
+        volLabel: "Alc. By Vol.",
+        meter1: "Floral Sweetness",
+        meter2: "Spice Depth",
+        meter3: "Velvet Smoothness",
+        meter4: "Botanical Complexity",
+        ritualTitle: "Serving Ritual",
+        ritualDesc: "Pour neat at 18°C in a crystal tulip glass. Allow the spirit to breathe for 2 minutes to awaken its delicate floral nectar and warm botanical spice. Alternatively, serve over a single crystal-clear ice sphere.",
+        productSub: "Danish Artisan Expression",
+        productTitle: "Madhuca Original Harvest",
+        productDesc: "Our flagship botanical spirit handcrafted in strictly numbered batches by Nordic Stolt Beverages ApS.",
+        p1Tag: "Flagship",
+        p1Title: "Madhuca Original Harvest",
+        p1Desc: "Crafted directly from fresh Madhuca indica blossoms. Crisp floral aromatics with an extraordinarily smooth finish, capturing the pure essence of wild-harvested Asian flora combined with Danish pure water.",
+        btnDetails: "View Specifications",
+        btnRecipe: "View Recipe",
+        cocktailSub: "Craft Cocktail Alchemy",
+        cocktailTitle: "Signature Mixology",
+        cocktailDesc: "Curated by Copenhagen's leading mixologists to showcase the versatility of Madhuca Original Harvest.",
+        c1Title: "Madhuca Old Fashioned",
+        c1Desc: "Madhuca Original Harvest, birch syrup, cardamom bitters, orange twist.",
+        c2Title: "Nordic Mahua Sour",
+        c2Desc: "Madhuca Original Harvest, sea buckthorn juice, egg white, wild honey.",
+        c3Title: "Botanical Mist",
+        c3Desc: "Madhuca Original Harvest, elderflower cordial, sparkling tonic, mint mist.",
+        craftSub: "Nordic Craft Excellence",
+        craftTitle: "Crafted with Pride in Denmark",
+        craftDesc: "At Nordic Stolt Beverages ApS, our Danish production facility operates on 100% green energy. We blend centuries-old Asian floral harvesting traditions with strict Scandinavian quality control standards.",
+        craftPill1Title: "Fair-Trade Sourcing",
+        craftPill1Desc: "Direct partnership with indigenous harvester cooperatives, ensuring fair wages and forest conservation.",
+        craftPill2Title: "Zero-Waste Production",
+        craftPill2Desc: "Spent floral botanicals are repurposed into organic compost for local Danish agriculture.",
+        cvrLabel: "Company Reg",
+        locLabel: "Location",
+        botLabel: "Primary Botanical",
+        batchLabel: "Batch Production",
+        contactSub: "Acquire & Inquire",
+        contactTitle: "Connect with Nordic Stolt",
+        contactDesc: "Interested in becoming an exclusive stockist, distributor, or requesting a private tasting session in Denmark? Contact our team.",
+        fieldName: "Full Name",
+        fieldEmail: "Email Address",
+        fieldType: "Inquiry Type",
+        fieldMsg: "Message",
+        opt1: "Private Bottle Acquisition",
+        opt2: "Restaurant / Bar Distribution",
+        opt3: "Press & Media",
+        opt4: "Private Tasting Session",
+        btnSubmit: "Transmit Message",
+        msgSent: "Thank you for contacting Nordic Stolt Beverages. Our concierge will respond shortly.",
+        footerWarning: "PLEASE DRINK RESPONSIBLY. MADHUCA ADVOCATES MODERATE CONSUMPTION. MUST BE OF LEGAL DRINKING AGE IN YOUR JURISDICTION TO PURCHASE.",
+        btnRequest: "Request Allocation",
+        btnClose: "Close",
+        ingTitle: "Ingredients",
+        prepTitle: "Preparation Technique"
+      },
+      da: {
+        ageBrand: "Nordic Stolt Beverages ApS • Danmark",
+        ageTitle: "Velkommen til Madhuca",
+        ageDesc: "Du skal være af lovlig alder for alkoholforbrug i dit bopælsland for at træde ind i vores verden af luksuriøs dansk spiritushåndværk.",
+        ageBtnYes: "Jeg er af lovlig alder",
+        ageBtnNo: "Jeg er under den lovlige alder",
+        langLabel: "Sprog / Language:",
+        deniedTitle: "Adgang Nægtet",
+        deniedDesc: "Vi støtter strengt ansvarligt forbrug. Du skal være af lovlig alder for at få adgang til Nordic Stolt Beverages.",
+        navStory: "Historien",
+        navSpirit: "Smagsnoter",
+        navProduct: "Spiritussen",
+        navMixology: "Mixologi",
+        navCraft: "Håndværket",
+        navAcquire: "Erhverv",
+        heroBadge: "Ultra-Premium Dansk Spiritus",
+        heroTitleMain: "Østens Hellige Blomst,",
+        heroTitleSub: "Mesterligt Forædlet i Norden.",
+        heroDesc: "Fremstillet af Nordic Stolt Beverages ApS i Danmark. Vildthøstede Madhuca indica blomster kombineret med skandinavisk præcision og rent kildevand.",
+        heroCta1: "Udforsk Madhuca",
+        heroCta2: "Opdag Vores Håndværk",
+        statAbv: "Alkohol / 75 Proof",
+        statOrigin: "Mikro-Batch Fremstillet",
+        statNatural: "Naturlig Blomst",
+        storySub: "To Verdener Mødes",
+        storyTitle: "Oprindelsen af Madhuca",
+        storyDesc: "I århundreder blev det natblomstrende Madhuca indica-træ æret i asiatisk folklore for sine saftige og søde blomster. Nordic Stolt Beverages ApS bringer denne sjældne juvel til Skandinavien og forbinder gammel blomsterarv med dansk håndværkskunst.",
+        step1Title: "Vild Høst",
+        step1Desc: "Blomsterne plukkes i hånden ved daggry, når nektarsødmen er på sit højeste. Høstet bæredygtigt i samarbejde med lokale skovsamfund.",
+        step2Title: "Nordisk Transport",
+        step2Desc: "Soltørrede blomster transporteres omhyggeligt under klimakontrol direkte til vores boutique-produktionsanlæg i Danmark.",
+        step3Title: "Håndværksmæssig Maceration",
+        step3Desc: "Udtrukket med håndværksmæssig omhu i traditionelle danske kobberkar for at frigive noter af honning, nødder og botanik.",
+        step4Title: "Rent Dansk Vand",
+        step4Desc: "Blandet med mineralrigt dansk kildevand, der giver Madhuca sin silkebløde tekstur og krystalklare renhed.",
+        tastingSub: "Sanseevaluering",
+        tastingTitle: "En Enestående Smagsarkitektur",
+        tastingDesc: "Hverken traditionel rom eller single malt whisky—Madhuca skaber sin egen luksuskategori. Et komplekst samspil af varm blomsterhonning, ristede macadamianødder, kardemomme og ren nordisk eg.",
+        noseTitle: "Næsen",
+        noseDesc: "Vild honning, ristede cashewnødder, tørret figen, subtil jasminblomst.",
+        palateTitle: "Smagen",
+        palateDesc: "Rig fløjlsblød mundfornemmelse, mørk karamel, knust kardemomme, tørret aprikos.",
+        finishTitle: "Eftersmagen",
+        finishDesc: "Lang, varm og dvælende egekrydderi med et strejf af botanisk sødme.",
+        masterBatchTitle: "Madhuca Original Harvest",
+        masterBatchSub: "Batch #01 • Dansk Botanisk Spiritus",
+        volLabel: "Alk. Vol.",
+        meter1: "Blomstersødme",
+        meter2: "Krydderidybde",
+        meter3: "Fløjlsblødhed",
+        meter4: "Botanisk Kompleksitet",
+        ritualTitle: "Serveringsritual",
+        ritualDesc: "Nydes ren ved 18°C i et krystaltulipanglas. Lad spiritussen ilte i 2 minutter for at vække dens delikate blomsternektar og varme botaniske krydderier. Kan også serveres over en enkelt klar iskugle.",
+        productSub: "Dansk Håndværksudgave",
+        productTitle: "Madhuca Original Harvest",
+        productDesc: "Vores flagskibs botaniske spiritus håndlavet i strengt nummererede partier af Nordic Stolt Beverages ApS.",
+        p1Tag: "Flagskib",
+        p1Title: "Madhuca Original Harvest",
+        p1Desc: "Fremstillet direkte fra friske Madhuca indica blomster. Friske blomsteraromaer med en usædvanlig blød finish, der indfanger den rene essens af vildthøstet asiatisk flora kombineret med rent dansk kildevand.",
+        btnDetails: "Se Specifikationer",
+        btnRecipe: "Se Opskrift",
+        cocktailSub: "Cocktail-Alkymi",
+        cocktailTitle: "Signatur Mixologi",
+        cocktailDesc: "Udviklet af Københavns førende mixologer for at vise Madhuca Original Harvests alsidighed.",
+        c1Title: "Madhuca Old Fashioned",
+        c1Desc: "Madhuca Original Harvest, birkesirup, kardemommebitter, appelsinskal.",
+        c2Title: "Nordic Mahua Sour",
+        c2Desc: "Madhuca Original Harvest, havtornsaft, æggehvide, vild honning.",
+        c3Title: "Botanical Mist",
+        c3Desc: "Madhuca Original Harvest, hyldeblomstsaft, tonik, mynte.",
+        craftSub: "Nordisk Håndværk",
+        craftTitle: "Fremstillet med Stolthed i Danmark",
+        craftDesc: "Hos Nordic Stolt Beverages ApS kører vores danske produktionsanlæg på 100% grøn energi. Vi kombinerer ældgamle asiatiske høsttraditioner med skandinavisk kvalitetskontrol.",
+        craftPill1Title: "Fair-Trade Indkøb",
+        craftPill1Desc: "Direkte partnerskab med lokale høstkooperativer, der sikrer retfærdige lønninger og skovbevarelse.",
+        craftPill2Title: "Bæredygtig Produktion",
+        craftPill2Desc: "Brugte botaniske blomster genanvendes som organisk kompost til lokalt dansk landbrug.",
+        cvrLabel: "CVR-Nummer",
+        locLabel: "Placering",
+        botLabel: "Primær Botanik",
+        batchLabel: "Batch Produktion",
+        contactSub: "Kontakt & Køb",
+        contactTitle: "Kom i Kontakt med Nordic Stolt",
+        contactDesc: "Interesseret i at blive forhandler, distributør eller ønsker du en privat smagning i Danmark? Kontakt vores team.",
+        fieldName: "Fulde Navn",
+        fieldEmail: "E-mailadresse",
+        fieldType: "Henvendelsestype",
+        fieldMsg: "Besked",
+        opt1: "Privat Flaskekøb",
+        opt2: "Restaurant / Bar Distribution",
+        opt3: "Presse & Medier",
+        opt4: "Privat Smagning",
+        btnSubmit: "Send Besked",
+        msgSent: "Tak fordi du kontaktede Nordic Stolt Beverages. Vi vender tilbage hurtigst muligt.",
+        footerWarning: "NYD MED OMTANKE. MADHUCA ADVOKERER FOR ANSVARSFULDT FORBRUG. DU SKAL VÆRE AF LOVLIG ALDER FOR AT KØBE.",
+        btnRequest: "Anmod om Allokering",
+        btnClose: "Luk",
+        ingTitle: "Ingredienser",
+        prepTitle: "Fremgangsmåde"
+      }
+    };
+
+    let currentLang = 'en';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      const data = i18nData[lang];
+      if (!data) return;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (data[key]) {
+          el.innerText = data[key];
+        }
+      });
+
+      // Update switcher active states
+      const btnEn = document.getElementById('btn-lang-en');
+      const btnDa = document.getElementById('btn-lang-da');
+      if (btnEn && btnDa) {
+        if (lang === 'en') {
+          btnEn.className = 'px-2.5 py-1 rounded-full bg-gold-500 text-obsidian font-semibold transition-all';
+          btnDa.className = 'px-2.5 py-1 rounded-full text-gray-400 hover:text-gold-300 font-semibold transition-all';
+        } else {
+          btnDa.className = 'px-2.5 py-1 rounded-full bg-gold-500 text-obsidian font-semibold transition-all';
+          btnEn.className = 'px-2.5 py-1 rounded-full text-gray-400 hover:text-gold-300 font-semibold transition-all';
+        }
+      }
+
+      const modalEn = document.getElementById('btn-modal-en');
+      const modalDa = document.getElementById('btn-modal-da');
+      if (modalEn && modalDa) {
+        if (lang === 'en') {
+          modalEn.className = 'text-xs font-semibold px-2 py-0.5 rounded text-gold-400 border border-gold-500/40';
+          modalDa.className = 'text-xs font-semibold px-2 py-0.5 rounded text-gray-400 hover:text-gold-400';
+        } else {
+          modalDa.className = 'text-xs font-semibold px-2 py-0.5 rounded text-gold-400 border border-gold-500/40';
+          modalEn.className = 'text-xs font-semibold px-2 py-0.5 rounded text-gray-400 hover:text-gold-400';
+        }
+      }
+    }
+
+    function confirmAge(isLegal) {
+      if (isLegal) {
+        document.getElementById('age-modal').classList.add('opacity-0', 'pointer-events-none');
+        setTimeout(() => {
+          document.getElementById('age-modal').style.display = 'none';
+        }, 500);
+      } else {
+        document.getElementById('underage-msg').classList.remove('hidden');
+      }
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+        menu.classList.add('flex');
+      } else {
+        menu.classList.add('hidden');
+        menu.classList.remove('flex');
+      }
+    }
+
+    const cocktailDetails = {
+      c1: {
+        en: { title: "Madhuca Old Fashioned", ingredients: ["60ml Madhuca Original Harvest", "10ml Danish Birch Syrup", "2 dashes Cardamom Bitters", "Expressed Orange Peel"], prep: "Stir all ingredients over a hand-carved ice cube for 30 seconds. Strain into a heavy crystal glass and garnish with an orange twist." },
+        da: { title: "Madhuca Old Fashioned", ingredients: ["60ml Madhuca Original Harvest", "10ml Dansk Birkesirup", "2 stænk Kardemommebitter", "Appelsinskal"], prep: "Rør alle ingredienser over en håndskåret iskugle i 30 sekunder. Si over i et krystaltulipanglas og pynt med appelsinskal." }
+      },
+      c2: {
+        en: { title: "Nordic Mahua Sour", ingredients: ["50ml Madhuca Original Harvest", "25ml Fresh Sea Buckthorn Juice", "15ml Wildflower Honey Syrup", "1 Egg White"], prep: "Dry shake all ingredients vigorously. Add ice, shake again, and fine strain into a chilled coupe glass." },
+        da: { title: "Nordic Mahua Sour", ingredients: ["50ml Madhuca Original Harvest", "25ml Frisk Havtornsaft", "15ml Vildhonning Sirup", "1 Æggehvide"], prep: "Ryst alle ingredienser kraftigt uden is. Tilsæt is, ryst igen, og si over i et afkølet coupe-glas." }
+      },
+      c3: {
+        en: { title: "Botanical Mist", ingredients: ["45ml Madhuca Original Harvest", "15ml Elderflower Cordial", "100ml Premium Indian Tonic Water", "Fresh Mint Spray"], prep: "Build over cubed ice in a highball glass. Top with tonic water and spray with organic mint mist." },
+        da: { title: "Botanical Mist", ingredients: ["45ml Madhuca Original Harvest", "15ml Hyldeblomstsaft", "100ml Premium Tonic Water", "Frisk Mynte-Spray"], prep: "Fyld et highball-glas med is. Tilsæt Madhuca og hyldeblomst, top med tonic og spray med mynte." }
+      }
+    };
+
+    function openProductModal() {
+      const modalContent = document.getElementById('modal-content');
+      const isEn = currentLang === 'en';
+      modalContent.innerHTML = `
+        <span class="text-xs text-gold-400 uppercase tracking-widest font-semibold block mb-1">Specifications</span>
+        <h3 class="font-serif text-2xl text-white font-bold mb-2">Madhuca Original Harvest</h3>
+        <span class="text-xl font-serif text-gold-400 font-bold block mb-4">€115.00</span>
+        <p class="text-gray-300 text-xs leading-relaxed mb-6">
+          ${isEn 
+            ? "Crafted directly from fresh Madhuca indica blossoms harvested at peak nectar density. Features crisp floral aromatics, natural botanical sweetness, and an extraordinarily smooth Nordic spring water finish. 37.5% ABV." 
+            : "Fremstillet direkte fra friske Madhuca indica blomster høstet ved maksimal nektartæthed. Har friske blomsteraromaer, naturlig botanisk sødme og en usædvanlig blød finish med dansk kildevand. 37.5% Alkohol."}
+        </p>
+        <a href="#contact" onclick="closeInfoModal()" class="w-full inline-block text-center py-3 rounded-full bg-gold-gradient text-obsidian font-semibold text-xs uppercase tracking-widest hover:brightness-110 transition-all">
+          ${i18nData[currentLang].btnRequest}
+        </a>
+      `;
+      document.getElementById('info-modal').classList.remove('hidden');
+    }
+
+    function openCocktailModal(id) {
+      const data = cocktailDetails[id][currentLang];
+      const modalContent = document.getElementById('modal-content');
+      modalContent.innerHTML = `
+        <span class="text-xs text-gold-400 uppercase tracking-widest font-semibold block mb-1">${i18nData[currentLang].cocktailSub}</span>
+        <h3 class="font-serif text-2xl text-white font-bold mb-4">${data.title}</h3>
+        
+        <div class="mb-4">
+          <h4 class="text-xs uppercase tracking-wider text-gold-400 font-bold mb-2">${i18nData[currentLang].ingTitle}</h4>
+          <ul class="list-disc list-inside text-xs text-gray-300 space-y-1">
+            ${data.ingredients.map(i => `<li>${i}</li>`).join('')}
+          </ul>
+        </div>
+
+        <div class="mb-6">
+          <h4 class="text-xs uppercase tracking-wider text-gold-400 font-bold mb-2">${i18nData[currentLang].prepTitle}</h4>
+          <p class="text-xs text-gray-300 leading-relaxed">${data.prep}</p>
+        </div>
+
+        <button onclick="closeInfoModal()" class="w-full py-2.5 rounded-full border border-gold-500/40 text-gold-400 text-xs uppercase tracking-widest hover:bg-gold-500/10">
+          ${i18nData[currentLang].btnClose}
+        </button>
+      `;
+      document.getElementById('info-modal').classList.remove('hidden');
+    }
+
+    function closeInfoModal() {
+      document.getElementById('info-modal').classList.add('hidden');
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      document.getElementById('contact-form').classList.add('hidden');
+      document.getElementById('form-success').classList.remove('hidden');
+    }
+  </script>
+
+</body>
+</html>
